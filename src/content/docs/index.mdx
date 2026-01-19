@@ -1,0 +1,182 @@
+---
+title: OpenNOW
+description: High-performance native streaming client for GeForce NOW
+template: splash
+hero:
+  tagline: Open source GeForce NOW client built from the ground up in Native Rust
+  image:
+    file: ../../assets/houston.webp
+  actions:
+    - text: Download
+      link: https://github.com/zortos293/OpenNOW/releases
+      icon: external
+      variant: primary
+    - text: Get Started
+      link: /guides/getting-started/
+      icon: right-arrow
+    - text: GitHub
+      link: https://github.com/zortos293/OpenNOW
+      icon: github
+---
+
+import { Card, CardGrid, Aside, LinkCard, Steps, Badge } from '@astrojs/starlight/components';
+
+<Aside type="caution" title="Early Development">
+OpenNOW is under **active development**. Expect bugs and performance issues. 
+Check [Known Issues](#known-issues) for current limitations.
+</Aside>
+
+## Why OpenNOW?
+
+<CardGrid>
+	<Card title="Native Performance" icon="rocket">
+		Written in Rust with zero-overhead graphics bindings using wgpu and egui. No Electron, no web views.
+	</Card>
+	<Card title="Uncapped Potential" icon="open-book">
+		No artificial limits on FPS, resolution, or bitrate. Stream at 240+ FPS if your connection supports it.
+	</Card>
+	<Card title="Privacy Focused" icon="approve-check">
+		No telemetry by default. Your data stays on your machine.
+	</Card>
+	<Card title="Cross-Platform" icon="laptop">
+		Native builds for Windows, macOS (Apple Silicon + Intel), and Linux.
+	</Card>
+</CardGrid>
+
+## Quick Start
+
+<Steps>
+1. **Download** the latest release from [GitHub Releases](https://github.com/zortos293/OpenNOW/releases)
+
+2. **Extract** and run the application
+   - Windows: Extract zip, run `opennow-streamer.exe`
+   - macOS: Extract zip, drag `OpenNOW.app` to Applications
+   - Linux: Make AppImage executable and run it
+
+3. **Login** with your NVIDIA GeForce NOW account
+
+4. **Play** - Browse games and start streaming!
+</Steps>
+
+<LinkCard
+  title="Full Setup Guide"
+  description="Detailed instructions for all platforms, including building from source"
+  href="/guides/getting-started/"
+/>
+
+---
+
+## Features
+
+### Implemented
+
+| Feature | Status | Description |
+|---------|:------:|-------------|
+| Authentication | <Badge text="Working" variant="success" /> | OAuth login with NVIDIA accounts |
+| Game Library | <Badge text="Working" variant="success" /> | Browse and search games via CloudMatch |
+| WebRTC Streaming | <Badge text="Working" variant="success" /> | Low-latency video streaming |
+| Hardware Decoding | <Badge text="Working" variant="success" /> | D3D11VA, VideoToolbox, Vulkan Video |
+| Zero-Copy Rendering | <Badge text="Working" variant="success" /> | GPU textures direct to display |
+| Mouse & Keyboard | <Badge text="Working" variant="success" /> | Raw input capture on all platforms |
+| Gamepad Support | <Badge text="Working" variant="success" /> | Controllers via gilrs library |
+| Audio Playback | <Badge text="Working" variant="success" /> | Low-latency Opus audio |
+| Stats Overlay | <Badge text="Working" variant="success" /> | FPS, bitrate, latency monitoring |
+| Anti-AFK | <Badge text="Working" variant="success" /> | Prevent session timeout |
+| Alliance Partners | <Badge text="Working" variant="success" /> | au, Taiwan Mobile, bro.game |
+
+### Coming Soon
+
+| Feature | Status | Description |
+|---------|:------:|-------------|
+| Clipboard Paste | <Badge text="In Progress" variant="caution" /> | Paste text to remote session |
+| Microphone | <Badge text="Planned" variant="note" /> | Voice chat support |
+| Instant Replay | <Badge text="Planned" variant="note" /> | NVIDIA-style instant replay |
+| Screenshots | <Badge text="Planned" variant="note" /> | Quick capture |
+| AV1 Codec | <Badge text="Planned" variant="note" /> | Modern codec support |
+| Plugin System | <Badge text="Planned" variant="note" /> | Custom scripts and extensions |
+| Theming | <Badge text="Planned" variant="note" /> | UI customization |
+
+---
+
+## Platform Support
+
+| Platform | Status | Hardware Decoding |
+|----------|:------:|-------------------|
+| Windows x64 | <Badge text="Working" variant="success" /> | D3D11VA (NVIDIA, AMD, Intel) |
+| Windows ARM64 | <Badge text="Untested" variant="note" /> | Should work |
+| macOS ARM64 | <Badge text="Working" variant="success" /> | VideoToolbox (M1/M2/M3) |
+| macOS Intel | <Badge text="Working" variant="success" /> | VideoToolbox via Rosetta 2 |
+| Linux x64 | <Badge text="Buggy" variant="caution" /> | Vulkan Video (RTX, Arc, RDNA2+) |
+| Linux ARM64 | <Badge text="Buggy" variant="caution" /> | GStreamer |
+| Raspberry Pi | <Badge text="Broken" variant="danger" /> | Under investigation |
+
+---
+
+## Known Issues
+
+<Aside type="danger" title="Performance Notice">
+The app is being actively optimized. High CPU usage and stuttering are being addressed.
+</Aside>
+
+| Issue | Workaround |
+|-------|------------|
+| **High CPU usage** | Lower FPS/resolution. Optimization ongoing. |
+| **Green screen flashes** | Switch to H.264 codec in settings. |
+| **Audio stuttering** | Restart stream. Buffer improvements planned. |
+| **Laggy input feeling** | Enable `low_latency_mode`. Being improved. |
+| **Linux instability** | Use Windows/macOS for now. |
+| **Raspberry Pi broken** | V4L2 decoder issues being investigated. |
+
+---
+
+## Keyboard Shortcuts
+
+| Key | Action |
+|-----|--------|
+| `F2` | Toggle sidebar |
+| `F3` | Toggle stats |
+| `F8` | Toggle mouse capture |
+| `F9` | Start/stop recording |
+| `F11` | Toggle fullscreen |
+| `Ctrl+Shift+Q` | Quit session |
+| `Ctrl+Shift+F10` | Toggle anti-AFK |
+
+---
+
+## Documentation
+
+<CardGrid>
+  <LinkCard title="Getting Started" href="/guides/getting-started/" description="Download, install, and run OpenNOW" />
+  <LinkCard title="Architecture" href="/architecture/overview/" description="How OpenNOW works internally" />
+  <LinkCard title="Configuration" href="/reference/configuration/" description="All settings and options" />
+  <LinkCard title="WebRTC Reference" href="/reference/webrtc/" description="Streaming protocol details" />
+</CardGrid>
+
+---
+
+## Support
+
+<CardGrid>
+  <LinkCard 
+    title="Discord Community" 
+    href="https://discord.gg/8EJYaJcNfD" 
+    description="Get help and chat with other users"
+  />
+  <LinkCard 
+    title="GitHub Issues" 
+    href="https://github.com/zortos293/OpenNOW/issues" 
+    description="Report bugs or request features"
+  />
+  <LinkCard 
+    title="Sponsor Development" 
+    href="https://github.com/sponsors/zortos293" 
+    description="Support continued development"
+  />
+</CardGrid>
+
+---
+
+<Aside type="tip" title="Not affiliated with NVIDIA">
+OpenNOW is an independent project not affiliated with NVIDIA Corporation. 
+GeForce NOW is a trademark of NVIDIA. Use at your own risk.
+</Aside>
